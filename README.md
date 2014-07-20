@@ -12,8 +12,18 @@ The *producer.py* script should read all the .log files in an S3 bucket, locate 
 
 The *consumer.py* script should read messages from the SQS queue, and then load them into an RDS database for analysis.
 
+### AWS Setup
+
+Take note of the region you're in when following the steps below.
+
+ 1. Manually create an S3 bucket, and upload the log files in `/resources` to it.
+ 2. Create an RDS database, and modify a member security group so that it's accessible from your IP address.
+ 3. Create an SQS queue
+
 ### Setup for OSX Users
 
  1. Install pip `sudo easy_install pip`
  2. Install Boto, the AWS SDK for Python: `sudo pip install boto`
- 3. Download the files from https://github.com/cialowicz/AWS-Intro-Code-Kata
+ 3. Install MySQL for Python: `sudo pip install PyMySQL`
+ 4. Download the files from https://github.com/cialowicz/AWS-Intro-Code-Kata
+
