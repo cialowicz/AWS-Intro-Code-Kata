@@ -25,12 +25,13 @@ def processQueueMessages():
 	queue = sqsConn.get_queue(queueName)
 	messages = queue.get_messages(10)
 	while len(messages) > 0:
-		map(processSqsMessage, messages)
+		[processSqsMessage(message, queue) for message in messages]
 		messages = queue.get_messages(10)
 
-def processSqsMessage(sqsMessage):
+def processSqsMessage(sqsMessage, queue):
 	params = json.loads(sqsMessage.get_body())
 	writeExceptionToDB(params)
+	queue.delete_message(sqsMessage)
 
 def writeExceptionToDB(params):
 	try:
