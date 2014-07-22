@@ -35,7 +35,7 @@ def processSqsMessage(sqsMessage, queue):
 
 def writeExceptionToDB(params):
 	try:
-		cursor.execute("""INSERT INTO exceptions (date, time, type, task, class, message) VALUES (%s, %s, %s, %s, %s, %s)""",
+		cursor.execute("""INSERT INTO errors (date, time, type, task, class, message) VALUES (%s, %s, %s, %s, %s, %s)""",
 			(params["date"], params["time"], params["type"], params["task"], params["class"], params["message"]))
 		dbConn.commit()
 	except:
