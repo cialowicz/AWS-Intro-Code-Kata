@@ -4,17 +4,20 @@ from boto.sqs.message import Message
 import boto.sqs
 import pymysql
 
+# Reads exception messages from an SQS queue (messages placed there by producer.py),
+# and inserts them into a MySQL database (hopefully RDS if you're doing the full AWS kata)
+
 # AWS Keys
 AWS_key    = ''
 AWS_secret = ''
 
 # AWS Variables
-queueName  = 'aws-intro-code-kata'
-region     = 'us-west-1'
+queueName  = ''
+region     = ''
 dbHost     = ''
 dbUser     = ''
 dbPass     = ''
-dbName     = 'exceptions'
+dbName     = ''
 
 # Persistent Connections
 sqsConn = boto.sqs.connect_to_region(region, aws_access_key_id=AWS_key, aws_secret_access_key=AWS_secret)
