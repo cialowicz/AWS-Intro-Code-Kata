@@ -13,9 +13,9 @@ AWS_key    = ''
 AWS_secret = ''
 
 # AWS Variables
-bucketName = 'aws-intro-code-kata'
-queueName  = '' # @todo choose a unique queue name
-region     = 'us-west-1'
+bucketName = ''
+queueName  = ''
+region     = ''
 
 def processBucketLogFiles():
 	# @todo: write your code here!
