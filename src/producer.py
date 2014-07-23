@@ -4,9 +4,9 @@ from boto.s3.connection import S3Connection
 from boto.sqs.message import Message
 import boto.sqs
 
-# Reads all the .log files in an S3 bucket,
-# locates exceptions within the log file,
-# and writes basic exception information to an SQS queue
+# Should read all the .log files in an S3 bucket,
+# parse each log file to locate code exceptions,
+# and then write basic exception information to an SQS queue.
 
 # AWS Keys
 AWS_key    = ''
