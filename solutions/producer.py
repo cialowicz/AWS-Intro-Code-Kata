@@ -4,14 +4,18 @@ from boto.s3.connection import S3Connection
 from boto.sqs.message import Message
 import boto.sqs
 
+# Reads all the .log files in an S3 bucket,
+# parses each log file to locate code exceptions,
+# and then writes basic exception information to an SQS queue.
+
 # AWS Keys
 AWS_key    = ''
 AWS_secret = ''
 
 # AWS Variables
-bucketName = 'aws-intro-code-kata'
-queueName  = 'aws-intro-code-kata'
-region     = 'us-west-1'
+bucketName = ''
+queueName  = ''
+region     = ''
 
 # Persistent Connections
 sqsConn = boto.sqs.connect_to_region(region, aws_access_key_id=AWS_key, aws_secret_access_key=AWS_secret)
