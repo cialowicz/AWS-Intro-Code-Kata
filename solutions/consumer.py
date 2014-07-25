@@ -33,16 +33,18 @@ def processQueueMessages():
 
 def processSqsMessage(sqsMessage, queue):
 	params = json.loads(sqsMessage.get_body())
-	writeExceptionToDB(params)
-	queue.delete_message(sqsMessage)
+	if writeExceptionToDB(params):
+		queue.delete_message(sqsMessage)
 
 def writeExceptionToDB(params):
 	try:
 		cursor.execute("""INSERT INTO errors (date, time, type, task, class, message) VALUES (%s, %s, %s, %s, %s, %s)""",
 			(params["date"], params["time"], params["type"], params["task"], params["class"], params["message"]))
 		dbConn.commit()
+		return True
 	except:
 		dbConn.rollback()
+		return False
 
 if __name__ == "__main__":
 	processQueueMessages()
